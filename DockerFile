@@ -1,0 +1,13 @@
+FROM centos:latest
+MAINTAINER roopal.mishra@gmail.com
+LABEL Remarks="This is a dockerfile example for Centos system"
+RUN yum -y install httpd && \
+    zip\
+    unzip
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page258/loxury.zip /var/www/html
+WORKDIR /var/www/html
+RUN unzip loxury.zip
+RUN cp -rvf loxury/*
+RUN rm-rf loxury loxury.zip
+CMD ["/usr/sbin/httpd", "-D", "FOREFROUND"]
+EXPOSE 80
